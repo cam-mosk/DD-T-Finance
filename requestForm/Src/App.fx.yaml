@@ -1,0 +1,60 @@
+App As appinfo:
+    BackEnabled: =false
+    OnStart: |-
+        =Collect(
+            Functions,
+            {
+                L1: "Tech Delivery",
+                L2: "Architecture"
+            },
+            {
+                L1: "Tech Delivery",
+                L2: "Digital Workforce"
+            },
+            {
+                L1: "Tech Delivery",
+                L2: "Tech Engineering & Delivery"
+            },
+            {
+                L1: "Tech Delivery",
+                L2: "Shared Platforms"
+            },
+            {
+                L1: "Tech Delivery",
+                L2: "ERP"
+            },
+            {
+                L1: "Tech Delivery",
+                L2: "Product Experience"
+            },
+            {
+                L1: "Tech Delivery",
+                L2: "DevOps & Cloud Enablement"
+            },
+            {
+                L1: "Enterprise Data",
+                L2: "Enterprise Data"
+            },
+            {
+                L1: "Enterprise Data",
+                L2: "GDC"
+            },
+            {
+                L1: "Tech Ops",
+                L2: "App Ops"
+            },
+            {
+                L1: "Tech Ops",
+                L2: "Hybrid Cloud"
+            },
+            {
+                L1: "Tech Ops",
+                L2: "Workforce Device"
+            },
+            {
+                L1: "Tech Ops",
+                L2: "Workforce Tech"
+            }
+        )
+    StartScreen: ='Home Screen'
+
