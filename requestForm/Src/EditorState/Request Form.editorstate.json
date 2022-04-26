@@ -532,7 +532,7 @@
       "LayoutName": "horizontal",
       "MetaDataIDKey": "",
       "Name": "Asset/Real IO_DataCard1",
-      "ParentIndex": 23,
+      "ParentIndex": 24,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -49409,7 +49409,7 @@
       "LayoutName": "",
       "MetaDataIDKey": "",
       "Name": "status_Card",
-      "ParentIndex": 24,
+      "ParentIndex": 23,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {

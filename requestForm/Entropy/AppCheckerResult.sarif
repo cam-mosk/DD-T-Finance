@@ -2504,6 +2504,36 @@
             {
               "logicalLocations": [
                 {
+                  "fullyQualifiedName": "App.varMode"
+                }
+              ],
+              "physicalLocation": {
+                "address": {
+                  "fullyQualifiedName": "App.varMode",
+                  "relativeAddress": 0
+                }
+              },
+              "properties": {
+                "member": "varMode",
+                "module": "App",
+                "type": "App"
+              }
+            }
+          ],
+          "message": {
+            "id": "issue"
+          },
+          "properties": {
+            "level": "Medium"
+          },
+          "ruleId": "app-UnusedVariables",
+          "ruleIndex": 2
+        },
+        {
+          "locations": [
+            {
+              "logicalLocations": [
+                {
                   "fullyQualifiedName": "'view Form'.requestForm_1.Item"
                 }
               ],

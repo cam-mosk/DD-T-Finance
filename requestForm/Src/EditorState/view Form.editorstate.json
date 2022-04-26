@@ -70,7 +70,7 @@
       "LayoutName": "vertical",
       "MetaDataIDKey": "",
       "Name": "Action Required_DataCard1_1",
-      "ParentIndex": 25,
+      "ParentIndex": 24,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {
@@ -532,7 +532,7 @@
       "LayoutName": "vertical",
       "MetaDataIDKey": "",
       "Name": "Asset/Real IO_DataCard1_1",
-      "ParentIndex": 24,
+      "ParentIndex": 25,
       "PersistMetaDataIDKey": false,
       "Properties": [
         {

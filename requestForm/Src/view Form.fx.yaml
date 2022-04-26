@@ -5,7 +5,7 @@
     requestForm_1 As form:
         BorderColor: =RGBA(166, 166, 166, 1)
         DataSource: ='Business Office Request List'
-        DefaultMode: =If(varMode = View, FormMode.View, Edit)
+        DefaultMode: =FormMode.View
         Height: =690
         Item: =requestGallery.Selected
         NumberOfColumns: =2
@@ -70,7 +70,6 @@
                 Font: =Font.'Segoe UI'
                 FontWeight: =FontWeight.Semibold
                 Height: =34
-                PaddingBottom: =0
                 PaddingLeft: =0
                 Size: =13
                 Text: =Parent.DisplayName
@@ -1225,7 +1224,6 @@
                 Font: =Font.'Segoe UI'
                 FontWeight: =FontWeight.Semibold
                 Height: =34
-                PaddingBottom: =0
                 PaddingLeft: =0
                 Size: =13
                 Text: =Parent.DisplayName
@@ -1284,7 +1282,6 @@
                 Font: =Font.'Segoe UI'
                 FontWeight: =FontWeight.Semibold
                 Height: =34
-                PaddingBottom: =0
                 PaddingLeft: =0
                 Size: =13
                 Text: =Parent.DisplayName
