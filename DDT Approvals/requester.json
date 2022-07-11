@@ -77,7 +77,15 @@
         }
       ]
     },
-
+    {
+      "type": "TextBlock",
+      "size": "medium",
+      "text": "This item has been submitted to 'Budget Owner' for Approval",
+      "horizontalAlignment": "center",
+      "weight": "bolder",
+      "wrap": true,
+      "color": "good"
+    },
     {
       "type": "TextBlock",
       "size": "Large",
@@ -123,98 +131,6 @@
         {
           "title": "Fiscal Year",
           "value": "@{outputs('Get_item')?['body/FiscalYear/Value']}"
-        }
-      ]
-    },
-
-    {
-      "type": "ActionSet",
-      "separator": true,
-      "actions": [
-        {
-          "type": "Action.ToggleVisibility",
-          "title": "Approve",
-          "style": "positive",
-          "id": "approve&input",
-          "targetElements": ["approvalInputs"]
-        },
-        {
-          "type": "Action.ToggleVisibility",
-          "title": "Reject",
-          "style": "destructive",
-          "id": "reject&Input",
-          "targetElements": ["rejectInputs"]
-        }
-      ]
-    },
-
-    {
-      "type": "Container",
-      "id": "approvalInputs",
-      "isVisible": false,
-      "items": [
-        {
-          "type": "Input.Text",
-          "placeholder": "Enter Cost Center",
-          "label": "Cost Center",
-          "id": "cc"
-        },
-        {
-          "type": "Input.Text",
-          "placeholder": "Enter IO",
-          "label": "Internal Order #",
-          "id": "io"
-        },
-        {
-          "type": "Input.Text",
-          "placeholder": "Enter Only if CapEx",
-          "id": "realio",
-          "label": "Real IO"
-        },
-        {
-          "type": "Input.Text",
-          "id": "comment",
-          "label": "Comments",
-          "placeholder": "Add a comment",
-          "isMultiline": true
-        },
-        {
-          "type": "ActionSet",
-          "separator": true,
-          "actions": [
-            {
-              "type": "Action.Submit",
-              "title": "Approve & Submit",
-              "style": "positive",
-              "id": "approveStatus"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "Container",
-      "id": "rejectInputs",
-      "isVisible": false,
-      "items": [
-        {
-          "type": "Input.Text",
-          "id": "rejectcomment",
-          "placeholder": "Enter reasoning for rejection",
-          "maxLength": 500,
-          "isMultiline": true
-        },
-        {
-          "type": "ActionSet",
-          "separator": true,
-          "actions": [
-            {
-              "type": "Action.Submit",
-              "title": "Reject & Submit",
-              "style": "destructive",
-              "id": "rejectStatus"
-            }
-          ]
         }
       ]
     }

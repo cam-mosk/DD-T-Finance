@@ -1,0 +1,135 @@
+{
+  "type": "AdaptiveCard",
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "version": "1.4",
+  "msteams": {
+    "width": "Full"
+  },
+  "body": [
+    {
+      "type": "TextBlock",
+      "size": "Large",
+      "weight": "Bolder",
+      "text": "New DD&T Approval Request has been Submitted "
+    },
+    {
+      "type": "TextBlock",
+      "spacing": "None",
+      "text": "Created: @{outputs('Get_item')?['body/Created']}",
+      "isSubtle": true,
+      "wrap": true
+    },
+    {
+      "type": "ColumnSet",
+      "columns": [
+        {
+          "type": "Column",
+          "items": [
+            {
+              "type": "Image",
+              "style": "Person",
+              "url": "@{outputs('Get_item')?['body/Author/Picture']}",
+              "altText": "@{outputs('Get_item')?['body/Author/DisplayName']}",
+              "size": "Small"
+            }
+          ],
+          "width": "auto"
+        },
+        {
+          "type": "Column",
+          "items": [
+            {
+              "type": "TextBlock",
+              "weight": "Bolder",
+              "text": "Service Provider:@{outputs('Get_item')?['body/Author/DisplayName']}",
+              "wrap": true
+            }
+          ],
+          "width": "stretch"
+        },
+
+        {
+          "type": "Column",
+          "items": [
+            {
+              "type": "TextBlock",
+              "weight": "Bolder",
+              "text": "Requester: @{outputs('Get_item')?['body/Payer/DisplayName']}",
+              "wrap": true,
+              "horizontalAlignment": "right"
+            }
+          ],
+          "width": "stretch"
+        },
+        {
+          "type": "Column",
+          "items": [
+            {
+              "type": "Image",
+              "style": "Person",
+              "url": "@{outputs('Get_item')?['body/Payer/Picture']}",
+              "altText": "@{outputs('Get_item')?['body/Payer/DisplayName']}",
+              "size": "Small",
+              "horizontalAlignment": "right"
+            }
+          ],
+          "width": "auto"
+        }
+      ]
+    },
+
+    {
+      "type": "TextBlock",
+      "size": "Large",
+      "weight": "Bolder",
+      "text": "Request Info",
+      "wrap": true,
+      "spacing": "Default",
+      "horizontalAlignment": "Center",
+      "color": "accent"
+    },
+    {
+      "type": "Input.Text",
+      "label": "Name",
+      "style": "text",
+      "id": "SimpleVal",
+      "isRequired": true,
+      "errorMessage": "Name is required"
+    },
+    {
+      "type": "Input.Text",
+      "label": "Title",
+      "style": "text",
+      "isRequired": true,
+      "value": "{Current Title}",
+      "id": "revised_Title"
+    },
+    {
+      "type": "Input.Number",
+      "label": "Amount in: {Currency}",
+      "id": "revised_Amount",
+      "isRequired": true,
+      "value": 12348480108108.25
+    },
+
+    {
+      "type": "Input.Date",
+      "label": "Estimated Start Date",
+      "id": "revised_StartDate",
+      "value": "{Start Date}"
+    },
+    {
+      "type": "Input.Date",
+      "label": "Estimated End Date",
+      "id": "revised_EndDate",
+      "value": "{End Date}"
+    },
+    {
+      "type": "Input.Text",
+      "label": "Comments",
+      "style": "text",
+      "isMultiline": true,
+      "id": "MultiLineVal"
+    }
+  ]
+}

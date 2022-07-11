@@ -1,0 +1,78 @@
+{
+  "type": "AdaptiveCard",
+  "msteams": {
+    "width": "Full"
+  },
+  "body": [
+    {
+      "type": "TextBlock",
+      "size": "Medium",
+      "weight": "Bolder",
+      "text": "DD&T Approval Request {Title}{ID} has been rejected",
+      "wrap": true,
+      "style": "heading"
+    },
+    {
+      "type": "ColumnSet",
+      "columns": [
+        {
+          "type": "Column",
+          "items": [
+            {
+              "type": "Image",
+              "style": "Person",
+              "url": "${creator.profileImage}",
+              "altText": "${creator.name}",
+              "size": "Small"
+            }
+          ],
+          "width": "auto"
+        },
+        {
+          "type": "Column",
+          "items": [
+            {
+              "type": "TextBlock",
+              "weight": "Bolder",
+              "text": "Rejector: ${creator.name}",
+              "wrap": true
+            }
+          ],
+          "width": "stretch"
+        }
+      ]
+    },
+    {
+      "type": "TextBlock",
+      "text": "Rejection Comments: {rejectcomment}",
+      "wrap": true
+    },
+    {
+      "type": "Container",
+      "style": "default",
+      "height": "stretch"
+    },
+    {
+      "type": "TextBlock",
+      "text": "Would you like to revise this request?",
+      "wrap": true,
+      "horizontalAlignment": "center"
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.Submit",
+      "title": "Revise",
+      "style": "positive",
+      "id": "reviseRequest"
+    },
+    {
+      "type": "Action.ToggleVisibility",
+      "title": "Close",
+      "style": "destructive",
+      "id": "closeReject"
+    }
+  ],
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "version": "1.4"
+}
