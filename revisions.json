@@ -1,0 +1,222 @@
+{
+  "type": "AdaptiveCard",
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "version": "1.4",
+  "msteams": {
+    "width": "Full"
+  },
+  "body": [
+    {
+      "type": "TextBlock",
+      "size": "Large",
+      "weight": "Bolder",
+      "text": "New DD&T Approval Request has been Submitted "
+    },
+    {
+      "type": "TextBlock",
+      "spacing": "None",
+      "text": "Created: @{outputs('Get_item')?['body/Created']}",
+      "isSubtle": true,
+      "wrap": true
+    },
+    {
+      "type": "ColumnSet",
+      "columns": [
+        {
+          "type": "Column",
+          "items": [
+            {
+              "type": "Image",
+              "style": "Person",
+              "url": "@{outputs('Get_item')?['body/Author/Picture']}",
+              "altText": "@{outputs('Get_item')?['body/Author/DisplayName']}",
+              "size": "Small"
+            }
+          ],
+          "width": "auto"
+        },
+        {
+          "type": "Column",
+          "items": [
+            {
+              "type": "TextBlock",
+              "weight": "Bolder",
+              "text": "Service Provider:@{outputs('Get_item')?['body/Author/DisplayName']}",
+              "wrap": true
+            }
+          ],
+          "width": "stretch"
+        },
+
+        {
+          "type": "Column",
+          "items": [
+            {
+              "type": "TextBlock",
+              "weight": "Bolder",
+              "text": "Requester: @{outputs('Get_item')?['body/Payer/DisplayName']}",
+              "wrap": true,
+              "horizontalAlignment": "right"
+            }
+          ],
+          "width": "stretch"
+        },
+        {
+          "type": "Column",
+          "items": [
+            {
+              "type": "Image",
+              "style": "Person",
+              "url": "@{outputs('Get_item')?['body/Payer/Picture']}",
+              "altText": "@{outputs('Get_item')?['body/Payer/DisplayName']}",
+              "size": "Small",
+              "horizontalAlignment": "right"
+            }
+          ],
+          "width": "auto"
+        }
+      ]
+    },
+
+    {
+      "type": "TextBlock",
+      "size": "Large",
+      "weight": "Bolder",
+      "text": "Request Info",
+      "wrap": true,
+      "spacing": "Default",
+      "horizontalAlignment": "Center",
+      "color": "accent"
+    },
+    {
+      "type": "FactSet",
+      "spacing": "Large",
+      "facts": [
+        {
+          "title": "Title",
+          "value": "@{outputs('Get_item')?['body/Title']}"
+        },
+        {
+          "title": "ID",
+          "value": "@{outputs('Get_item')?['body/ID']}"
+        },
+        {
+          "title": "Est. Start Date",
+          "value": "@{outputs('Get_item')?['body/ProjectStartDate']}"
+        },
+        {
+          "title": "Est. End Date",
+          "value": "@{outputs('Get_item')?['body/ProjectEndDate']}"
+        },
+        {
+          "title": "Scope",
+          "value": "@{outputs('Get_item')?['body/ScopeofWork']}"
+        },
+        {
+          "title": "Currency",
+          "value": "@{outputs('Get_item')?['body/Currency/Value']}"
+        },
+        {
+          "title": "Amount",
+          "value": "@{outputs('Get_item')?['body/Amount']}"
+        },
+        {
+          "title": "Fiscal Year",
+          "value": "@{outputs('Get_item')?['body/FiscalYear/Value']}"
+        }
+      ]
+    },
+
+    {
+      "type": "ActionSet",
+      "separator": true,
+      "actions": [
+        {
+          "type": "Action.ToggleVisibility",
+          "title": "Approve",
+          "style": "positive",
+          "id": "approve&input",
+          "targetElements": ["approvalInputs"]
+        },
+        {
+          "type": "Action.ToggleVisibility",
+          "title": "Reject",
+          "style": "destructive",
+          "id": "reject&Input",
+          "targetElements": ["rejectInputs"]
+        }
+      ]
+    },
+
+    {
+      "type": "Container",
+      "id": "approvalInputs",
+      "isVisible": false,
+      "items": [
+        {
+          "type": "Input.Text",
+          "placeholder": "Enter Cost Center",
+          "label": "Cost Center",
+          "id": "cc"
+        },
+        {
+          "type": "Input.Text",
+          "placeholder": "Enter IO",
+          "label": "Internal Order #",
+          "id": "io"
+        },
+        {
+          "type": "Input.Text",
+          "placeholder": "Enter Only if CapEx",
+          "id": "realio",
+          "label": "Real IO"
+        },
+        {
+          "type": "Input.Text",
+          "id": "comment",
+          "label": "Comments",
+          "placeholder": "Add a comment",
+          "isMultiline": true
+        },
+        {
+          "type": "ActionSet",
+          "separator": true,
+          "actions": [
+            {
+              "type": "Action.Submit",
+              "title": "Approve & Submit",
+              "style": "positive",
+              "id": "approveStatus"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Container",
+      "id": "rejectInputs",
+      "isVisible": false,
+      "items": [
+        {
+          "type": "Input.Text",
+          "id": "rejectcomment",
+          "placeholder": "Enter reasoning for rejection",
+          "maxLength": 500,
+          "isMultiline": true
+        },
+        {
+          "type": "ActionSet",
+          "separator": true,
+          "actions": [
+            {
+              "type": "Action.Submit",
+              "title": "Reject & Submit",
+              "style": "destructive",
+              "id": "rejectStatus"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
