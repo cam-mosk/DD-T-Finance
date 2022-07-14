@@ -41,7 +41,7 @@
             {
               "type": "TextBlock",
               "weight": "Bolder",
-              "text": "Service Provider:@{outputs('Get_item')?['body/Author/DisplayName']}",
+              "text": "Service Provider: @{outputs('Get_item')?['body/Author/DisplayName']}",
               "wrap": true
             }
           ],
