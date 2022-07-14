@@ -8,7 +8,7 @@
       "type": "TextBlock",
       "size": "Medium",
       "weight": "Bolder",
-      "text": "DD&T Approval Request {Title}{ID} has been rejected",
+      "text": "DD&T Approval Request @{outputs('Get_item')?['body/Title']} ID:@{outputs('Get_item')?['body/ID']} has been rejected",
       "wrap": true,
       "style": "heading"
     },
@@ -19,22 +19,9 @@
           "type": "Column",
           "items": [
             {
-              "type": "Image",
-              "style": "Person",
-              "url": "${creator.profileImage}",
-              "altText": "${creator.name}",
-              "size": "Small"
-            }
-          ],
-          "width": "auto"
-        },
-        {
-          "type": "Column",
-          "items": [
-            {
               "type": "TextBlock",
               "weight": "Bolder",
-              "text": "Rejector: ${creator.name}",
+              "text": "Rejector: @{outputs('Get_item')?['body/Approver/DisplayName']}",
               "wrap": true
             }
           ],
@@ -44,7 +31,7 @@
     },
     {
       "type": "TextBlock",
-      "text": "Rejection Comments: {rejectcomment}",
+      "text": "Rejection Comments: @{body('approvalParse')?['data']?['rejectcomment']}",
       "wrap": true
     },
     {
@@ -57,20 +44,24 @@
       "text": "Would you like to revise this request?",
       "wrap": true,
       "horizontalAlignment": "center"
-    }
-  ],
-  "actions": [
-    {
-      "type": "Action.Submit",
-      "title": "Revise",
-      "style": "positive",
-      "id": "reviseRequest"
     },
     {
-      "type": "Action.ToggleVisibility",
-      "title": "Close",
-      "style": "destructive",
-      "id": "closeReject"
+      "type": "ActionSet",
+      "separator": false,
+      "actions": [
+        {
+          "type": "Action.Submit",
+          "title": "Revise Request",
+          "style": "positive",
+          "id": "reviseRequest"
+        },
+        {
+          "type": "Action.Submit",
+          "title": "Close and Cancel Requests",
+          "style": "destructive",
+          "id": "closeReject"
+        }
+      ]
     }
   ],
   "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",

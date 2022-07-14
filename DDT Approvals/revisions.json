@@ -10,7 +10,7 @@
       "type": "TextBlock",
       "size": "Large",
       "weight": "Bolder",
-      "text": "New DD&T Approval Request has been Submitted "
+      "text": "DD&T Approval {Title}"
     },
     {
       "type": "TextBlock",
@@ -77,12 +77,11 @@
         }
       ]
     },
-
     {
       "type": "TextBlock",
       "size": "Large",
       "weight": "Bolder",
-      "text": "Request Info",
+      "text": "Request Revisions",
       "wrap": true,
       "spacing": "Default",
       "horizontalAlignment": "Center",
@@ -90,46 +89,64 @@
     },
     {
       "type": "Input.Text",
-      "label": "Name",
-      "style": "text",
-      "id": "SimpleVal",
-      "isRequired": true,
-      "errorMessage": "Name is required"
-    },
-    {
-      "type": "Input.Text",
       "label": "Title",
       "style": "text",
       "isRequired": true,
-      "value": "{Current Title}",
+      "value": "@{outputs('Get_item')?['body/Title']}",
       "id": "revised_Title"
     },
     {
-      "type": "Input.Number",
-      "label": "Amount in: {Currency}",
-      "id": "revised_Amount",
-      "isRequired": true,
-      "value": 12348480108108.25
+      "type": "Input.Text",
+      "label": "Scope of Work",
+      "style": "text",
+      "isMultiline": true,
+      "id": "revised_scope",
+      "value": "@{outputs('Get_item')?['body/ScopeofWork']}"
+    },
+    {
+      "type": "Input.Text",
+      "label": "Assumptions",
+      "style": "text",
+      "isMultiline": true,
+      "value": "@{outputs('Get_item')?['body/Assumptions']}",
+      "id": "revised_Assumptions"
+    },
+    {
+      "type": "Input.Text",
+      "label": "Amount in: @{outputs('Get_item')?['body/Currency/Value']}",
+      "id": "revised_Amount"
     },
 
     {
       "type": "Input.Date",
       "label": "Estimated Start Date",
       "id": "revised_StartDate",
-      "value": "{Start Date}"
+      "value": "@{outputs('Get_item')?['body/ProjectStartDate']}"
     },
     {
       "type": "Input.Date",
       "label": "Estimated End Date",
       "id": "revised_EndDate",
-      "value": "{End Date}"
+      "value": "@{outputs('Get_item')?['body/ProjectEndDate']}"
     },
     {
       "type": "Input.Text",
       "label": "Comments",
       "style": "text",
       "isMultiline": true,
-      "id": "MultiLineVal"
+      "id": "revised_Comments"
+    },
+    {
+      "type": "ActionSet",
+      "separator": true,
+      "actions": [
+        {
+          "type": "Action.Submit",
+          "title": "Approve & Submit",
+          "style": "positive",
+          "id": "revised_Approve"
+        }
+      ]
     }
   ]
 }
