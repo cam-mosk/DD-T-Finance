@@ -94,35 +94,43 @@
       "facts": [
         {
           "title": "Title",
-          "value": "@{outputs('get_updates')?['body/Title']}"
+          "value": "@{outputs('Get_item')?['body/Title']}"
         },
         {
-          "title": "ID",
-          "value": "@{outputs('get_updates')?['body/ID']}"
+          "title": "Description",
+          "value": "@{outputs('Get_item')?['body/Description']}"
         },
         {
-          "title": "Est. Start Date",
-          "value": "@{outputs('get_updates')?['body/ProjectStartDate']}"
-        },
-        {
-          "title": "Est. End Date",
-          "value": "@{outputs('get_updates')?['body/ProjectEndDate']}"
+          "title": "Assumptions",
+          "value": "@{outputs('Get_item')?['body/Assumptions']}"
         },
         {
           "title": "Scope",
-          "value": "@{outputs('get_updates')?['body/ScopeofWork']}"
+          "value": "@{outputs('Get_item')?['body/ScopeofWork']}"
+        },
+        {
+          "title": "Project Number",
+          "value": "@{outputs('Get_item')?['body/projectNumber']}"
         },
         {
           "title": "Currency",
-          "value": "@{outputs('get_updates')?['body/Currency/Value']}"
+          "value": "@{outputs('Get_item')?['body/Currency/Value']}"
         },
         {
           "title": "Amount",
-          "value": "@{outputs('get_updates')?['body/Amount']}"
+          "value": "@{outputs('Get_item')?['body/Amount']}"
         },
         {
-          "title": "Fiscal Year",
-          "value": "@{outputs('get_updates')?['body/FiscalYear/Value']}"
+          "title": "Est. Start Date",
+          "value": "@{outputs('Get_item')?['body/ProjectStartDate']}"
+        },
+        {
+          "title": "Est. End Date",
+          "value": "@{outputs('Get_item')?['body/ProjectEndDate']}"
+        },
+        {
+          "title": "Exp. Start Fiscal Year",
+          "value": "@{outputs('Get_item')?['body/FiscalYear/Value']}"
         }
       ]
     },

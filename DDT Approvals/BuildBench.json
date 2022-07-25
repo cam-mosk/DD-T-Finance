@@ -82,7 +82,7 @@
       "type": "TextBlock",
       "size": "Large",
       "weight": "Bolder",
-      "text": "Request Info",
+      "text": "Quote Info",
       "wrap": true,
       "spacing": "Default",
       "horizontalAlignment": "Center",
@@ -97,20 +97,20 @@
           "value": "@{outputs('Get_item')?['body/Title']}"
         },
         {
-          "title": "ID",
-          "value": "@{outputs('Get_item')?['body/ID']}"
+          "title": "Description",
+          "value": "@{outputs('Get_item')?['body/Description']}"
         },
         {
-          "title": "Est. Start Date",
-          "value": "@{outputs('Get_item')?['body/ProjectStartDate']}"
-        },
-        {
-          "title": "Est. End Date",
-          "value": "@{outputs('Get_item')?['body/ProjectEndDate']}"
+          "title": "Assumptions",
+          "value": "@{outputs('Get_item')?['body/Assumptions']}"
         },
         {
           "title": "Scope",
           "value": "@{outputs('Get_item')?['body/ScopeofWork']}"
+        },
+        {
+          "title": "Project Number",
+          "value": "@{outputs('Get_item')?['body/projectNumber']}"
         },
         {
           "title": "Currency",
@@ -121,7 +121,15 @@
           "value": "@{outputs('Get_item')?['body/Amount']}"
         },
         {
-          "title": "Fiscal Year",
+          "title": "Est. Start Date",
+          "value": "@{outputs('Get_item')?['body/ProjectStartDate']}"
+        },
+        {
+          "title": "Est. End Date",
+          "value": "@{outputs('Get_item')?['body/ProjectEndDate']}"
+        },
+        {
+          "title": "Exp. Start Fiscal Year",
           "value": "@{outputs('Get_item')?['body/FiscalYear/Value']}"
         }
       ]
@@ -144,6 +152,12 @@
           "style": "destructive",
           "id": "reject&Input",
           "targetElements": ["rejectInputs"]
+        },
+        {
+          "type": "Action.OpenUrl",
+          "title": "View in Sharepoint",
+          "url": "@{outputs('Get_item')?['body/{Link}']}",
+          "id": "itemlink"
         }
       ]
     },
@@ -152,7 +166,24 @@
       "type": "Container",
       "id": "approvalInputs",
       "isVisible": false,
+      "separator": true,
       "items": [
+        {
+          "type": "TextBlock",
+          "text": "Enter Billing Info",
+          "color": "accent",
+          "weight": "bolder",
+          "size": "large",
+          "horizontalAlignment": "center"
+        },
+        {
+          "type": "TextBlock",
+          "text": "Ensure you are authorized to approve spend to this CC.",
+          "color": "attention",
+          "weight": "bolder",
+          "size": "medium",
+          "horizontalAlignment": "center"
+        },
         {
           "type": "Input.Text",
           "placeholder": "Enter Cost Center",

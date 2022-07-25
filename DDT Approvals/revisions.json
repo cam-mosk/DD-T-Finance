@@ -97,6 +97,14 @@
     },
     {
       "type": "Input.Text",
+      "label": "Description",
+      "style": "text",
+      "isMultiline": true,
+      "value": "@{outputs('Get_item')?['body/Description']}",
+      "id": "revised_Desc"
+    },
+    {
+      "type": "Input.Text",
       "label": "Scope of Work",
       "style": "text",
       "isMultiline": true,
