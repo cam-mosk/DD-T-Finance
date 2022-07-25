@@ -101,7 +101,7 @@
       "style": "text",
       "isMultiline": true,
       "value": "@{outputs('Get_item')?['body/Description']}",
-      "id": "revised_Desc"
+      "id": "revised_Description"
     },
     {
       "type": "Input.Text",
