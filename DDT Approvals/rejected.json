@@ -57,7 +57,7 @@
         },
         {
           "type": "Action.Submit",
-          "title": "Close and Cancel Requests",
+          "title": "Close and Cancel Request",
           "style": "destructive",
           "id": "closeReject"
         }
