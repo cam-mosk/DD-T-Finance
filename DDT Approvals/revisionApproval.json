@@ -10,12 +10,12 @@
       "type": "TextBlock",
       "size": "Large",
       "weight": "Bolder",
-      "text": "DD&T Approval Request {@{outputs('get_updates')?['body/Title']}} has been Revised"
+      "text": "DD&T Approval Request @{outputs('get_updates')?['body/Title']} has been Revised"
     },
     {
       "type": "TextBlock",
       "spacing": "None",
-      "text": "Created: @{outputs('get_updates')?['body/Created']}",
+      "text": "Revised: @{outputs('get_updates')?['body/Modified']} ",
       "isSubtle": true,
       "wrap": true
     },
@@ -94,43 +94,35 @@
       "facts": [
         {
           "title": "Title",
-          "value": "@{outputs('Get_item')?['body/Title']}"
+          "value": "@{outputs('get_updates')?['body/Title']}"
         },
         {
-          "title": "Description",
-          "value": "@{outputs('Get_item')?['body/Description']}"
-        },
-        {
-          "title": "Assumptions",
-          "value": "@{outputs('Get_item')?['body/Assumptions']}"
-        },
-        {
-          "title": "Scope",
-          "value": "@{outputs('Get_item')?['body/ScopeofWork']}"
-        },
-        {
-          "title": "Project Number",
-          "value": "@{outputs('Get_item')?['body/projectNumber']}"
-        },
-        {
-          "title": "Currency",
-          "value": "@{outputs('Get_item')?['body/Currency/Value']}"
-        },
-        {
-          "title": "Amount",
-          "value": "@{outputs('Get_item')?['body/Amount']}"
+          "title": "ID",
+          "value": "@{outputs('get_updates')?['body/ID']}"
         },
         {
           "title": "Est. Start Date",
-          "value": "@{outputs('Get_item')?['body/ProjectStartDate']}"
+          "value": "@{outputs('get_updates')?['body/ProjectStartDate']}"
         },
         {
           "title": "Est. End Date",
-          "value": "@{outputs('Get_item')?['body/ProjectEndDate']}"
+          "value": "@{outputs('get_updates')?['body/ProjectEndDate']}"
         },
         {
-          "title": "Exp. Start Fiscal Year",
-          "value": "@{outputs('Get_item')?['body/FiscalYear/Value']}"
+          "title": "Scope",
+          "value": "@{outputs('get_updates')?['body/ScopeofWork']}"
+        },
+        {
+          "title": "Currency",
+          "value": "@{outputs('get_updates')?['body/Currency/Value']}"
+        },
+        {
+          "title": "Amount",
+          "value": "@{outputs('get_updates')?['body/Amount']}"
+        },
+        {
+          "title": "Fiscal Year",
+          "value": "@{outputs('get_updates')?['body/FiscalYear/Value']}"
         }
       ]
     },
@@ -152,6 +144,12 @@
           "style": "destructive",
           "id": "reject&Input",
           "targetElements": ["rejectInputs"]
+        },
+        {
+          "type": "Action.OpenUrl",
+          "title": "View in Sharepoint",
+          "url": "@{outputs('get_updates')?['body/{Link}']}",
+          "id": "itemlink"
         }
       ]
     },
@@ -165,23 +163,26 @@
           "type": "Input.Text",
           "placeholder": "Enter Cost Center",
           "label": "Cost Center",
-          "id": "cc"
+          "id": "zcc",
+          "value": "@{outputs('get_updates')?['body/CostCenter']}"
         },
         {
           "type": "Input.Text",
           "placeholder": "Enter IO",
           "label": "Internal Order #",
-          "id": "io"
+          "id": "zio",
+          "value": "@{outputs('Update_item')?['body/InternalOrder']}"
         },
         {
           "type": "Input.Text",
           "placeholder": "Enter Only if CapEx",
-          "id": "realio",
-          "label": "Real IO"
+          "id": "zrealio",
+          "label": "Real IO",
+          "value": "@{outputs('get_updates')?['body/RealIO']}"
         },
         {
           "type": "Input.Text",
-          "id": "comment",
+          "id": "zcomment",
           "label": "Comments",
           "placeholder": "Add a comment",
           "isMultiline": true
@@ -194,7 +195,7 @@
               "type": "Action.Submit",
               "title": "Approve & Submit",
               "style": "positive",
-              "id": "approveStatus"
+              "id": "zapproveStatus"
             }
           ]
         }
@@ -207,7 +208,7 @@
       "items": [
         {
           "type": "Input.Text",
-          "id": "rejectcomment",
+          "id": "zrejectcomment",
           "placeholder": "Enter reasoning for rejection",
           "maxLength": 500,
           "isMultiline": true
@@ -220,7 +221,7 @@
               "type": "Action.Submit",
               "title": "Reject & Submit",
               "style": "destructive",
-              "id": "rejectStatus"
+              "id": "zrejectStatus"
             }
           ]
         }

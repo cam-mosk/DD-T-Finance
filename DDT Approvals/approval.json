@@ -188,19 +188,22 @@
           "type": "Input.Text",
           "placeholder": "Enter Cost Center",
           "label": "Cost Center",
-          "id": "cc"
+          "id": "cc",
+          "value": "@{outputs('Get_item')?['body/CostCenter']}"
         },
         {
           "type": "Input.Text",
           "placeholder": "Enter IO",
           "label": "Internal Order #",
-          "id": "io"
+          "id": "io",
+          "value": ""
         },
         {
           "type": "Input.Text",
           "placeholder": "Enter Only if CapEx",
           "id": "realio",
-          "label": "Real IO"
+          "label": "Real IO",
+          "value": ""
         },
         {
           "type": "Input.Text",
