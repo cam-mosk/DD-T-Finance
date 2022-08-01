@@ -97,16 +97,12 @@
           "value": "@{outputs('get_updates')?['body/Title']}"
         },
         {
-          "title": "ID",
-          "value": "@{outputs('get_updates')?['body/ID']}"
+          "title": "Description",
+          "value": "@{outputs('get_updates')?['body/Description']}"
         },
         {
-          "title": "Est. Start Date",
-          "value": "@{outputs('get_updates')?['body/ProjectStartDate']}"
-        },
-        {
-          "title": "Est. End Date",
-          "value": "@{outputs('get_updates')?['body/ProjectEndDate']}"
+          "title": "Assumptions",
+          "value": "@{outputs('get_updates')?['body/Assumptions']}"
         },
         {
           "title": "Scope",
@@ -121,7 +117,15 @@
           "value": "@{outputs('get_updates')?['body/Amount']}"
         },
         {
-          "title": "Fiscal Year",
+          "title": "Est. Start Date",
+          "value": "@{outputs('get_updates')?['body/ProjectStartDate']}"
+        },
+        {
+          "title": "Est. End Date",
+          "value": "@{outputs('get_updates')?['body/ProjectEndDate']}"
+        },
+        {
+          "title": "Exp. Start Fiscal Year",
           "value": "@{outputs('get_updates')?['body/FiscalYear/Value']}"
         }
       ]
@@ -171,7 +175,7 @@
           "placeholder": "Enter IO",
           "label": "Internal Order #",
           "id": "zio",
-          "value": "@{outputs('Update_item')?['body/InternalOrder']}"
+          "value": "@{outputs('get_updates')?['body/InternalOrder']}"
         },
         {
           "type": "Input.Text",

@@ -105,20 +105,12 @@
           "value": "@{outputs('Get_item')?['body/Title']}"
         },
         {
-          "title": "Description",
-          "value": "@{outputs('Get_item')?['body/Description']}"
-        },
-        {
           "title": "Assumptions",
           "value": "@{outputs('Get_item')?['body/Assumptions']}"
         },
         {
           "title": "Scope",
           "value": "@{outputs('Get_item')?['body/ScopeofWork']}"
-        },
-        {
-          "title": "Project Number",
-          "value": "@{outputs('Get_item')?['body/ProjectName']}"
         },
         {
           "title": "Currency",

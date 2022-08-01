@@ -109,10 +109,6 @@
           "value": "@{outputs('Get_item')?['body/ScopeofWork']}"
         },
         {
-          "title": "Project Number",
-          "value": "@{outputs('Get_item')?['body/ProjectName']}"
-        },
-        {
           "title": "Currency",
           "value": "@{outputs('Get_item')?['body/Currency/Value']}"
         },
